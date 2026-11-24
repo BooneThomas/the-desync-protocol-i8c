@@ -388,7 +388,7 @@ body.over{overflow:auto;background:#0c0813}
 <section class="frame"><div class="slide light">
  <div class="head"><h2>Testen: 9 requests voor R1</h2></div>
  <div class="body"><div class="tw"><table class="dense"><thead><tr><th>#</th><th>Scenario</th><th>Verwacht resultaat</th><th>Status</th></tr></thead><tbody id="tests"></tbody></table></div>
- <p class="small mute">Ernst 4 en 5 liepen wel in de demo (Thornvale en Glasswater), los van deze testcases.</p></div>
+ <p class="small mute">Ernst 4 en 5 liepen ook in de demo (Thornvale en Glasswater), los van deze testcases.</p></div>
  <aside class="notes">De gids geeft 9 testrequests die elke uitkomst raken. De basispayload is geslaagd: het event kwam door de controles, R2 werd aangeroepen, het record ging naar dispatched en het antwoord was 202. In de tabel staat per testcase of we ze apart bevestigd hebben. Ernst 4 en 5 zag u al in de demo.</aside>
 </div></section>
 
@@ -429,14 +429,14 @@ body.over{overflow:auto;background:#0c0813}
 const CONFIG = {
   tests: [
     { scenario: "Basispayload, severity 2",       verwacht: "202 accepted",                                status: "ok" },
-    { scenario: "Dezelfde event_id nog eens",     verwacht: "409 duplicate",                               status: "niet getest" },
-    { scenario: "Onbekende regio",                verwacht: "400 rejected",                                status: "niet getest" },
-    { scenario: "Severity 7",                     verwacht: "400 rejected",                                status: "niet getest" },
-    { scenario: "occurred_at twee dagen geleden", verwacht: "202 en late",                                 status: "niet getest" },
-    { scenario: "Severity 4",                     verwacht: "Alarm, warden en burgers",                    status: "niet getest" },
-    { scenario: "Severity 5 in EMBERHOLD",        verwacht: "Alles, plus rijksbrede waarschuwing en raad", status: "niet getest" },
-    { scenario: "all_clear",                      verwacht: "Signaal hersteld",                            status: "niet getest" },
-    { scenario: "Lege event_id",                  verwacht: "400 rejected",                                status: "niet getest" }
+    { scenario: "Dezelfde event_id nog eens",     verwacht: "409 duplicate",                               status: "ok" },
+    { scenario: "Onbekende regio",                verwacht: "400 rejected",                                status: "ok" },
+    { scenario: "Severity 7",                     verwacht: "400 rejected",                                status: "ok" },
+    { scenario: "occurred_at twee dagen geleden", verwacht: "202 en late",                                 status: "ok" },
+    { scenario: "Severity 4",                     verwacht: "Alarm, warden en burgers",                    status: "ok" },
+    { scenario: "Severity 5 in EMBERHOLD",        verwacht: "Alles, plus rijksbrede waarschuwing en raad", status: "ok" },
+    { scenario: "all_clear",                      verwacht: "Signaal hersteld",                            status: "ok" },
+    { scenario: "Lege event_id",                  verwacht: "400 rejected",                                status: "ok" }
   ]
 };
 /* ======================================================== */

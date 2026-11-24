@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Desync Protocol – OpenPrompting</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2316181d'/%3E%3Cpath d='M16 4c5 6 6 8 6 11a6 6 0 0 1-12 0c0-3 1-5 6-11zM11 23h10l2 5H9z' fill='%23c8321f'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23150f1f'/%3E%3Cpath d='M16 4c5 6 6 8 6 11a6 6 0 0 1-12 0c0-3 1-5 6-11zM11 23h10l2 5H9z' fill='%23f0602a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=Grenze+Gotisch:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--dark:#16181d;--light:#f3f1ec;--red:#c8321f;--teal:#1f6f78;
+:root{--dark:#150f1f;--light:#f2effa;--pur:#a32be0;--blue:#0b4fe0;--ice:#e6f4fb;--ora:#f0602a;
 --s1:#8a8f99;--s2:#6a707b;--s3:#e0a021;--s4:#c8321f;--s5:#7d1410}
 *{box-sizing:border-box;margin:0}
 html,body{height:100%}
@@ -20,11 +20,11 @@ code{font-family:ui-monospace,Consolas,Menlo,monospace;font-size:.92em;overflow-
 
 /* ---------- slide ---------- */
 .slide{width:1920px;height:1080px;padding:74px 80px 70px;font-size:28px;display:flex;flex-direction:column;gap:36px;
- position:relative;overflow:hidden;background:var(--bg);color:var(--fg)}
-.dark{--bg:var(--dark);--fg:var(--light);--card:#22252d;--line:#3a3f4a;--mute:#b4b8c1;--acc:#f0705d;--tl:#63b9c3}
-.light{--bg:var(--light);--fg:#16181d;--card:#fffdf9;--line:#d5d0c5;--mute:#555a63;--acc:#b52a18;--tl:#1f6f78}
+ position:relative;isolation:isolate;overflow:hidden;background:var(--bg);color:var(--fg)}
+.dark{--bg:var(--dark);--fg:var(--ice);--card:#231833;--line:#47325f;--mute:#b9aecb;--acc:#ff8a52;--tl:#7db4ff}
+.light{--bg:var(--light);--fg:#150f1f;--card:#fff;--line:#d6cce8;--mute:#584c6b;--acc:#8a1fc4;--tl:#0b4fe0}
 .head{display:flex;justify-content:space-between;align-items:flex-start;gap:40px}
-.head h2{font-size:64px;max-width:1380px}
+.head h2{font-family:'Grenze Gotisch',Archivo,serif;font-weight:700;font-size:84px;line-height:.96;letter-spacing:0;max-width:1340px}
 .shots{display:flex;gap:16px;flex:none}
 .shot{all:unset;cursor:zoom-in;border:3px solid var(--line);border-radius:8px;overflow:hidden;width:190px;height:107px;display:block}
 .shot[hidden]{display:none}
@@ -49,9 +49,10 @@ td{padding:17px 18px;border-bottom:2px solid var(--line);vertical-align:top}
 
 /* ---------- baken-landschap ---------- */
 .land{overflow:visible;position:absolute;left:0;right:0;bottom:-70px;width:100%;height:auto;display:block}
-.cover .txt{position:relative;z-index:1;margin-top:0}
-.cover h1{font-size:160px}
-.cover .st{font-size:52px;margin-top:26px;font-weight:500}
+.rift{position:absolute;inset:0;width:1920px;height:1080px;z-index:-1;display:block}
+.cover .txt{position:relative;z-index:1;margin-top:96px;text-align:center}
+.cover h1{font-family:'Grenze Gotisch',Archivo,serif;font-weight:800;letter-spacing:0;line-height:.86;font-size:212px;color:var(--ice);-webkit-text-stroke:26px var(--blue);paint-order:stroke fill;filter:drop-shadow(0 10px 0 #082f8e)}
+.cover .st{font-size:52px;margin-top:34px;font-weight:500}
 .cover .team{font-size:36px;margin-top:26px;color:var(--mute);font-weight:600}
 .cover .team b{color:var(--acc)}
 
@@ -60,17 +61,17 @@ td{padding:17px 18px;border-bottom:2px solid var(--line);vertical-align:top}
 .step{color:#fff;border-radius:10px 10px 0 0;padding:20px 22px;display:flex;flex-direction:column;gap:6px;height:var(--h);background:var(--c)}
 .step .num{font-size:74px;line-height:.95}
 .step b{font-size:27px}.step span{font-size:26px;line-height:1.3}
-.step.amber{color:#16181d}
+.step.amber{color:#150f1f}
 
 /* ---------- Slack ---------- */
 .msg{background:#fff;color:#1d1c1d;border:2px solid #d9d6cf;border-radius:10px;padding:18px 22px;display:grid;grid-template-columns:56px 1fr;gap:18px;min-width:0}
-.av{width:56px;height:56px;border-radius:10px;background:#16181d;display:block}
+.av{width:56px;height:56px;border-radius:10px;background:#150f1f;display:block}
 .who{font-weight:700;font-size:25px}
 .who em{font-style:normal;font-size:22px;font-weight:600;background:#e6e4df;color:#4b4a4c;border-radius:5px;padding:0 8px;margin:0 8px}
 .who time,.who i{font-style:normal;font-weight:400;font-size:22px;color:#616061}
 .msg p{font-size:25px;line-height:1.36}
 .msg.big p{font-size:34px;line-height:1.5}
-.msg.hot{border-left:10px solid var(--c,var(--red))}
+.msg.hot{border-left:10px solid var(--c,var(--s4))}
 .chan{font-weight:700;font-size:26px;color:var(--mute)}
 .foot{font-size:22px;color:var(--mute)}
 
@@ -79,8 +80,8 @@ td{padding:17px 18px;border-bottom:2px solid var(--line);vertical-align:top}
 .arr{font-size:44px;text-align:center;color:var(--acc);font-weight:700}
 .stack{display:grid;gap:20px;min-width:0}
 .stat{background:var(--card);border:2px solid var(--line);border-left:10px solid var(--c);border-radius:12px;padding:20px 26px}
-.json{background:#16181d;color:#e9e6df;border-radius:12px;padding:30px 34px;font:27px/1.65 ui-monospace,Consolas,Menlo,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
-.json b{color:#7fcbd4;font-weight:400}.json i{font-style:normal;color:#f2b79f}
+.json{background:#150f1f;color:#e9e6df;border-radius:12px;padding:30px 34px;font:27px/1.65 ui-monospace,Consolas,Menlo,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.json b{color:#7db4ff;font-weight:400}.json i{font-style:normal;color:#ffb48f}
 .dense td{padding:13px 16px;font-size:25px}
 .todo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .todo .card{padding:16px 22px;font-size:24px;line-height:1.32}
@@ -92,17 +93,17 @@ svg text{font-family:Inter,sans-serif}
 
 /* ---------- presentatiemodus ---------- */
 .notes{display:none}
-#bar{position:fixed;top:0;left:0;height:5px;background:var(--red);width:0;z-index:20;transition:width .3s}
-#no{position:fixed;right:20px;bottom:12px;z-index:20;font-weight:600;font-size:max(14px,calc(24px*var(--s,1)));color:#8d8f94}
-#panel{position:fixed;left:0;right:0;bottom:0;height:24vh;background:#0d0f13;color:#f3f1ec;border-top:3px solid var(--red);padding:18px 120px 18px 32px;font-size:clamp(17px,2.4vh,26px);line-height:1.45;overflow:auto;z-index:15;display:none}
-#panel b{color:#f0705d;display:block;font-size:.8em}
-#box{position:fixed;inset:0;background:rgba(10,11,14,.93);display:none;z-index:30;align-items:center;justify-content:center;cursor:zoom-out}
+#bar{position:fixed;top:0;left:0;height:5px;background:var(--pur);width:0;z-index:20;transition:width .3s}
+#no{position:fixed;right:20px;bottom:12px;z-index:20;font-weight:600;font-size:max(14px,calc(24px*var(--s,1)));color:#9a8fae}
+#panel{position:fixed;left:0;right:0;bottom:0;height:24vh;background:#0c0813;color:var(--ice);border-top:3px solid var(--pur);padding:18px 120px 18px 32px;font-size:clamp(17px,2.4vh,26px);line-height:1.45;overflow:auto;z-index:15;display:none}
+#panel b{color:#ff8a52;display:block;font-size:.8em}
+#box{position:fixed;inset:0;background:rgba(12,8,19,.94);display:none;z-index:30;align-items:center;justify-content:center;cursor:zoom-out}
 #box.on{display:flex}#box img{max-width:94vw;max-height:92vh}
 body.deck{overflow:hidden}
 .deck .frame{display:none}
 .deck .frame.active{display:block;position:fixed;left:var(--x);top:var(--y);width:1920px;height:1080px;transform:scale(var(--s));transform-origin:0 0}
 .deck.notes-on #panel{display:block}
-.deck .active .slide>*:not(.land){animation:rise .5s cubic-bezier(.2,.7,.2,1) backwards}
+.deck .active .slide>*:not(.land):not(.rift){animation:rise .5s cubic-bezier(.2,.7,.2,1) backwards}
 .deck .active .slide>.body{animation-delay:.1s}
 @keyframes rise{from{opacity:0;transform:translateY(22px)}}
 @keyframes fade{from{opacity:0}}
@@ -115,17 +116,17 @@ body.deck{overflow:hidden}
 .deck .active .fire{animation:fade .8s backwards;animation-delay:calc(.5s + var(--i)*.5s)}
 
 /* ---------- overzicht ---------- */
-body.over{overflow:auto;background:#0d0f13}
+body.over{overflow:auto;background:#0c0813}
 .over main{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:26px 20px}
 .over .frame{position:relative;aspect-ratio:16/9;overflow:hidden;cursor:pointer;border-radius:6px;outline:3px solid transparent;outline-offset:3px}
-.over .frame.active,.over .frame:hover{outline-color:var(--red)}
+.over .frame.active,.over .frame:hover{outline-color:var(--pur)}
 .over .slide{position:absolute;left:0;top:0;transform:scale(var(--t));transform-origin:0 0;pointer-events:none}
 .over #no{display:none}
 
 /* ---------- telefoon / smal scherm ---------- */
 .flow .slide{width:auto;height:auto;min-height:0;padding:40px 20px 44px;font-size:17px;gap:22px}
 .flow .head{flex-direction:column;gap:14px}
-.flow .head h2{font-size:30px}
+.flow .head h2{font-size:38px}
 .flow .body{gap:20px}
 .flow .g,.flow .todo,.flow .stairs,.flow .flow8,.flow .stack{grid-template-columns:minmax(0,1fr)!important;gap:14px;height:auto}
 .flow .shots{flex-direction:column;width:100%}.flow .shot{width:100%;height:auto;box-sizing:border-box}
@@ -143,7 +144,7 @@ body.over{overflow:auto;background:#0d0f13}
 .flow .tw table,.flow .tw tbody,.flow .tw tr,.flow .tw td{display:block}.flow .tw thead{display:none}
 .flow .tw tr{border-bottom:2px solid var(--line);padding:12px 0}.flow .tw td{border:0;padding:3px 0}
 .flow .tw td[data-l]::before{content:attr(data-l) ": ";color:var(--mute);font-weight:600;font-family:Inter,sans-serif;font-size:16px}
-.flow .cover{padding-bottom:0}.flow .cover .txt{margin-top:24px}.flow .cover h1{font-size:min(12vw,50px)!important}.flow .cover .st{font-size:22px}.flow .cover .team{font-size:18px!important}
+.flow .cover{padding-bottom:0}.flow .cover .txt{margin-top:24px}.flow .cover h1{font-size:min(13.5vw,70px)!important;-webkit-text-stroke-width:9px;filter:drop-shadow(0 4px 0 #082f8e)}.flow .rift{display:none}.flow .cover .st{font-size:22px}.flow .cover .team{font-size:18px!important}
 .flow .land{position:static;overflow:hidden;width:calc(100% + 40px);margin:0 -20px}
 .flow #bar,.flow #no,.flow #panel{display:none}
 
@@ -154,7 +155,7 @@ body.over{overflow:auto;background:#0d0f13}
 <div id="bar"></div><div id="no"></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<symbol id="bot" viewBox="0 0 56 56"><path d="M28 8c8 9 10 13 10 18a10 10 0 0 1-20 0c0-5 2-9 10-18z" fill="#c8321f"/><path d="M28 20c4 4 5 6 5 8a5 5 0 0 1-10 0c0-2 1-4 5-8z" fill="#f2b33c"/><path d="M20 40h16l4 9H16z" fill="#f3f1ec"/></symbol>
+<symbol id="bot" viewBox="0 0 56 56"><path d="M28 8c8 9 10 13 10 18a10 10 0 0 1-20 0c0-5 2-9 10-18z" fill="#f0602a"/><path d="M28 20c4 4 5 6 5 8a5 5 0 0 1-10 0c0-2 1-4 5-8z" fill="#f2b33c"/><path d="M20 40h16l4 9H16z" fill="#f3f1ec"/></symbol>
 <symbol id="tower" viewBox="0 0 80 150" overflow="visible"><path d="M22 150l6-86h24l6 86z"/><path d="M18 46h44v20H18z"/></symbol>
 </defs></svg>
 
@@ -178,10 +179,10 @@ body.over{overflow:auto;background:#0d0f13}
   </div>
   <p class="sub">Het probleem: meldingen van buiten zijn niet altijd betrouwbaar</p>
   <div class="g c4">
-   <div class="stat" style="--c:var(--red)"><b>Duplicaat</b><br>de melding kwam al binnen</div>
-   <div class="stat" style="--c:var(--red)"><b>Onbekende regio</b><br>niet in onze tabel</div>
-   <div class="stat" style="--c:var(--red)"><b>Foute ernst</b><br>buiten 1 tot 5</div>
-   <div class="stat" style="--c:var(--red)"><b>Verouderd</b><br>al lang achterhaald</div>
+   <div class="stat" style="--c:var(--pur)"><b>Duplicaat</b><br>de melding kwam al binnen</div>
+   <div class="stat" style="--c:var(--pur)"><b>Onbekende regio</b><br>niet in onze tabel</div>
+   <div class="stat" style="--c:var(--pur)"><b>Foute ernst</b><br>buiten 1 tot 5</div>
+   <div class="stat" style="--c:var(--pur)"><b>Verouderd</b><br>al lang achterhaald</div>
   </div>
  </div>
  <aside class="notes">Achrona heeft vier regio's. Elke regio heeft een Slack-kanaal, een warden die verantwoordelijk is, en burgers die zich inschreven op meldingen. Het probleem is dat meldingen van buiten komen en niet altijd kloppen. Daarom controleert het netwerk eerst, en alarmeert het pas daarna, naar de ernst van de melding.</aside>
@@ -224,7 +225,7 @@ body.over{overflow:auto;background:#0d0f13}
   <div class="step" style="--h:590px;--c:var(--s4);--i:3"><div class="num">4</div><b>ERNSTIG</b><span>Regiokanaal<br>+ warden<br>+ ingeschreven burgers</span></div>
   <div class="step" style="--h:750px;--c:var(--s5);--i:4"><div class="num">5</div><b>KRITIEK</b><span>Regiokanaal<br>+ warden<br>+ ingeschreven burgers<br>+ alle andere regio's<br>+ de raad</span></div>
   <i></i>
-  <div class="step" style="--h:400px;--c:var(--teal);--i:6"><div class="num" style="font-size:50px;line-height:1.2">all_clear</div><b>SIGNAAL HERSTELD</b><span>Sluit openstaande alarmen van de regio: <code>dispatched</code> wordt <code>resolved</code>. Geen nieuw alarm.</span></div>
+  <div class="step" style="--h:400px;--c:var(--blue);--i:6"><div class="num" style="font-size:50px;line-height:1.2">all_clear</div><b>SIGNAAL HERSTELD</b><span>Sluit openstaande alarmen van de regio: <code>dispatched</code> wordt <code>resolved</code>. Geen nieuw alarm.</span></div>
  </div></div>
  <aside class="notes">Dit is de kern van het systeem. Ernst 1 en 2 gaan alleen naar het regiokanaal, vanaf 3 komt de warden erbij, vanaf 4 de ingeschreven burgers, en bij 5 alle andere regio's en de raad. All_clear staat apart: dat sluit de openstaande waarschuwingen van die regio en geeft geen nieuw alarm.</aside>
 </div></section>
@@ -236,7 +237,7 @@ body.over{overflow:auto;background:#0d0f13}
    <tr><td class="http">1</td><td>Staat de <code>event_id</code> al in Event Log?</td><td data-l="Status"><span class="pill" style="background:var(--s2)">duplicate</span></td><td class="http" data-l="HTTP">409</td></tr>
    <tr><td class="http">2</td><td>Onbekende regio, ernst buiten 1–5 of lege <code>event_id</code>?</td><td data-l="Status"><span class="pill" style="background:var(--s4)">rejected</span></td><td class="http" data-l="HTTP">400</td></tr>
    <tr><td class="http">3</td><td><code>occurred_at</code> meer dan 24 uur oud?</td><td data-l="Status"><span class="pill" style="background:#8a5f06">late</span></td><td class="http" data-l="HTTP">202</td></tr>
-   <tr><td class="http">4</td><td><b>Try:</b> geldig, R2 stuurt de alarmen</td><td data-l="Status"><span class="pill" style="background:var(--teal)">dispatched</span></td><td class="http" data-l="HTTP">202</td></tr>
+   <tr><td class="http">4</td><td><b>Try:</b> geldig, R2 stuurt de alarmen</td><td data-l="Status"><span class="pill" style="background:var(--blue)">dispatched</span></td><td class="http" data-l="HTTP">202</td></tr>
    <tr><td class="http">5</td><td><b>Catch:</b> de verwerking ging mis</td><td data-l="Status"><span class="pill" style="background:var(--s5)">failed</span></td><td class="http" data-l="HTTP">400</td></tr>
   </tbody></table></div>
   <div class="stack">
@@ -268,11 +269,11 @@ body.over{overflow:auto;background:#0d0f13}
  <div class="body">
   <div class="flow8">
    <div class="card"><h3>Scout-rapport</h3><p class="small">Vrije tekst in <code>openprompting-scout-reports</code></p></div><div class="arr">→</div>
-   <div class="card" style="border-color:var(--red)"><h3>Genie</h3><p class="small">"Achrona Oracle" ontcijfert het rapport</p></div><div class="arr">→</div>
+   <div class="card" style="border-color:var(--pur)"><h3>Genie</h3><p class="small">"Achrona Oracle" ontcijfert het rapport</p></div><div class="arr">→</div>
    <div class="card"><h3>Velden</h3><p class="small">Regio, ernst, type, titel en betrouwbaarheid (%)</p></div><div class="arr">→</div>
    <div class="stack">
     <div class="stat" style="--c:var(--s3)"><b>🔍 Menselijke triage</b><p class="small">Ernst &lt; 1 <b class="acc">OF</b> betrouwbaarheid &lt; 60% <b class="acc">OF</b> onbekende regio</p></div>
-    <div class="stat" style="--c:var(--teal)"><b>✅ R2 – Beacon Dispatch</b><p class="small">Alles in orde: vastleggen, alarmeren, bevestigen in ops</p></div>
+    <div class="stat" style="--c:var(--blue)"><b>✅ R2 – Beacon Dispatch</b><p class="small">Alles in orde: vastleggen, alarmeren, bevestigen in ops</p></div>
    </div>
   </div>
   <div class="g c3" style="margin-top:20px">
@@ -291,7 +292,7 @@ body.over{overflow:auto;background:#0d0f13}
    <p class="sub">Elke 5 minuten: drie zoekopdrachten</p>
    <div class="stat" style="--c:var(--tl)"><b>1. Event Log</b><p>Alle events van het laatste uur (max. 200)</p></div>
    <div class="stat" style="--c:var(--s3)"><b>2. Failed Events</b><p>Alle mislukte events van het laatste uur (max. 100)</p></div>
-   <div class="stat" style="--c:var(--red)"><b>3. Open ernstige meldingen</b><p>Status <code>dispatched</code> en ernst ≥ 4, zwaarste eerst (max. 5)</p></div>
+   <div class="stat" style="--c:var(--s4)"><b>3. Open ernstige meldingen</b><p>Status <code>dispatched</code> en ernst ≥ 4, zwaarste eerst (max. 5)</p></div>
    <p class="mute small">Eén compact bericht in plaats van losse meldingen, zodat ops leesbaar blijft.</p>
   </div>
   <div class="stack">
@@ -354,13 +355,13 @@ body.over{overflow:auto;background:#0d0f13}
    <circle class="ring" style="--i:3" cx="390" cy="390" r="306" fill="#a3231a"/>
    <circle class="ring" style="--i:2" cx="390" cy="390" r="230" fill="#c8321f"/>
    <circle class="ring" style="--i:1" cx="390" cy="390" r="156" fill="#e0a021"/>
-   <circle class="ring" style="--i:0" cx="390" cy="390" r="86" fill="#16181d"/>
+   <circle class="ring" style="--i:0" cx="390" cy="390" r="86" fill="#150f1f"/>
    <g fill="#fff"><text class="seq" style="--i:8" x="390" y="56">de raad</text><text class="seq" style="--i:6" x="390" y="132">3 andere regio's</text><text class="seq" style="--i:4" x="390" y="207">5 burgers</text></g>
-   <text class="seq" style="--i:2" x="390" y="280" fill="#16181d">warden</text>
+   <text class="seq" style="--i:2" x="390" y="280" fill="#150f1f">warden</text>
    <text x="390" y="386" fill="#fff">alarm</text><text x="390" y="418" fill="#fff" font-size="24" font-weight="500">Glasswater</text></g>
   </svg>
   <div class="stack" style="gap:16px">
-   <div class="msg hot seq" style="--i:0;--c:#16181d"><svg class="av"><use href="#bot"/></svg><div><div class="who">Beacon Network<em>APP</em><i>het alarm</i></div><p>🚨 <b>[OpenPrompting] DESYNC ALERT – KRITIEK (5/5)</b><br>GLASSWATER · <code>rift_surge</code> · Het meer trekt zich terug</p></div></div>
+   <div class="msg hot seq" style="--i:0;--c:#150f1f"><svg class="av"><use href="#bot"/></svg><div><div class="who">Beacon Network<em>APP</em><i>het alarm</i></div><p>🚨 <b>[OpenPrompting] DESYNC ALERT – KRITIEK (5/5)</b><br>GLASSWATER · <code>rift_surge</code> · Het meer trekt zich terug</p></div></div>
    <div class="msg hot seq" style="--i:2;--c:var(--s3)"><svg class="av"><use href="#bot"/></svg><div><div class="who">Beacon Network<em>APP</em><i>de warden</i></div><p>🔔 [OpenPrompting] Warden <b>Nerys Talvi</b> wordt aangesproken</p></div></div>
    <div class="msg hot seq" style="--i:4"><svg class="av"><use href="#bot"/></svg><div><div class="who">Beacon Network<em>APP</em><i>burgers</i></div><p>ℹ️ [OpenPrompting] <b>5 burgers</b> krijgen elk een eigen bericht</p></div></div>
    <div class="msg hot seq" style="--i:6;--c:#a3231a"><svg class="av"><use href="#bot"/></svg><div><div class="who">Beacon Network<em>APP</em><i>3 berichten</i></div><p>🚨 [OpenPrompting] <b>RIJKSBREDE WAARSCHUWING</b><br>RIFTMARK · THORNVALE · EMBERHOLD</p></div></div>
@@ -412,9 +413,9 @@ body.over{overflow:auto;background:#0d0f13}
  <aside class="notes">We kennen onze zwakke plekken. De teller dispatch_count volgt de gids, maar telt rijksbrede en raadsberichten niet mee: bij ernst 5 geeft dat 7, tegenover 11 rijen in Dispatch Log. Als volgende stap zouden we een R5 bouwen die Failed Events opnieuw probeert. En een controle op dispatch_id, zodat een retry geen dubbele alarmen geeft.</aside>
 </div></section>
 
-<section class="frame"><div class="slide light cover">
- <div class="txt"><h1 style="font-size:124px">Het rijk is<br>gewaarschuwd.</h1><p class="st">Elk event gecontroleerd, elke melding gelogd,<br>elke twijfel bij een mens.</p><p class="team" style="font-size:44px"><b>Vragen?</b> &nbsp;Team OpenPrompting</p></div>
- <svg class="land" data-land="day" viewBox="0 0 1920 520" aria-hidden="true"></svg>
+<section class="frame"><div class="slide dark cover">
+ <div class="txt"><h1 style="font-size:176px">Het rijk is<br>gewaarschuwd.</h1><p class="st">Elk event gecontroleerd, elke melding gelogd,<br>elke twijfel bij een mens.</p><p class="team" style="font-size:44px"><b>Vragen?</b> &nbsp;Team OpenPrompting</p></div>
+ <svg class="land" data-land="night" viewBox="0 0 1920 520" aria-hidden="true"></svg>
  <aside class="notes">Het rijk is gewaarschuwd. Onthoud drie dingen: elk event wordt gecontroleerd, elke melding wordt gelogd, en elke twijfel gaat naar een mens. Bedankt voor het luisteren, we beantwoorden graag jullie vragen.</aside>
 </div></section>
 
@@ -444,26 +445,43 @@ const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [..
 const body = document.body, frames = $$('.frame'), N = frames.length;
 
 // Testtabel
-const kleur = { ok: '#1f6f78', fout: '#c8321f', 'niet getest': '#6a707b' };
+const kleur = { ok: '#0b4fe0', fout: '#c8321f', 'niet getest': '#6a707b' };
 $('#tests').innerHTML = CONFIG.tests.map((t, i) => `<tr><td><b>${i + 1}</b></td><td>${t.scenario}</td><td data-l="Verwacht">${t.verwacht}</td><td data-l="Status"><span class="pill" style="background:${kleur[t.status] || '#6a707b'}">${t.status}</span></td></tr>`).join('');
 
 // Bakenlandschap (cover en slot)
 $$('[data-land]').forEach(svg => {
-  const n = svg.dataset.land === 'night', far = n ? '#262b35' : '#d9d3c6', near = n ? '#0d0f13' : '#16181d', tw = n ? '#0d0f13' : '#16181d';
-  const t = [[230, 250], [720, 190], [1230, 225], [1690, 130]];
-  svg.innerHTML = t.map(([x, y], i) => `<g class="fire" style="--i:${i}"><circle cx="${x}" cy="${y - 62}" r="120" fill="#c8321f" opacity="${n ? .16 : .1}"/><circle cx="${x}" cy="${y - 62}" r="66" fill="#c8321f" opacity="${n ? .28 : .16}"/></g>`).join('') +
-    `<path d="M0 330L230 250 470 330 720 190 980 320 1230 225 1460 310 1690 130 1920 270V520H0z" fill="${far}"/>` +
+  const n = svg.dataset.land === 'night', far = n ? '#36205a' : '#d9d3c6', near = n ? '#0c0813' : '#150f1f', tw = n ? '#0c0813' : '#150f1f';
+  const t = [[190, 230], [520, 250], [1400, 250], [1730, 230]];
+  svg.innerHTML = t.map(([x, y], i) => `<g class="fire" style="--i:${i}"><circle cx="${x}" cy="${y - 62}" r="120" fill="#a32be0" opacity="${n ? .16 : .1}"/><circle cx="${x}" cy="${y - 62}" r="66" fill="#f0602a" opacity="${n ? .28 : .16}"/></g>`).join('') +
+    `<path d="M0 310L190 230 360 320 520 250 760 350 960 310 1160 350 1400 250 1560 320 1730 230 1920 310V520H0z" fill="${far}"/>` +
     t.map(([x, y], i) => `<use href="#tower" x="${x - 32}" y="${y - 70}" width="64" height="120" fill="${tw}"/>
-    <g class="fire" style="--i:${i}"><path d="M${x} ${y - 100}c20 24 24 34 24 46a24 24 0 0 1-48 0c0-12 4-22 24-46z" fill="#c8321f"/><path d="M${x} ${y - 66}c9 10 12 15 12 21a12 12 0 0 1-24 0c0-6 3-11 12-21z" fill="#f2b33c"/></g>`).join('') +
+    <g class="fire" style="--i:${i}"><path d="M${x} ${y - 100}c20 24 24 34 24 46a24 24 0 0 1-48 0c0-12 4-22 24-46z" fill="#f0602a"/><path d="M${x} ${y - 66}c9 10 12 15 12 21a12 12 0 0 1-24 0c0-6 3-11 12-21z" fill="#f2b33c"/></g>`).join('') +
     `<path d="M0 420L300 350 640 430 1000 350 1380 430 1700 350 1920 410V520H0z" fill="${near}"/>`;
 });
+
+// Rift-scheuren en drakenogen
+(() => {
+  const kubus = (x, y, s) => `<g transform="translate(${x} ${y})"><path d="M0 ${-s}L${s} ${-s / 2} 0 0 ${-s} ${-s / 2}z" fill="#e58bff"/><path d="M${-s} ${-s / 2}L0 0V${s}L${-s} ${s / 2}z" fill="#8a1fc4"/><path d="M${s} ${-s / 2}L0 0V${s}L${s} ${s / 2}z" fill="#5a1590"/></g>`;
+  const scheur = (d, w, g) => `<path d="${d}" fill="none" stroke="url(#${g})" stroke-width="${w}" stroke-linejoin="bevel"/><path d="${d}" fill="none" stroke="#150f1f" stroke-opacity=".35" stroke-width="3" stroke-dasharray="46 22 12 30" transform="translate(${w * .2} 0)"/><path d="${d}" fill="none" stroke="#f0b4ff" stroke-opacity=".55" stroke-width="3" stroke-dasharray="70 34 16 40" transform="translate(${-w * .16} 0)"/>`;
+  const grad = (id, y2) => `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1="0" y2="${y2}"><stop offset="0" stop-color="#7a1fb8"/><stop offset=".25" stop-color="#c23cf5"/><stop offset=".65" stop-color="#7a22b5"/><stop offset="1" stop-color="#36205a" stop-opacity=".25"/></linearGradient>`;
+  const oogVan = o => `<path d="M0 34Q70-34 190 50Q110 74 44 66Q14 60 0 34z" fill="#46204f"/><path d="M26 38Q80 2 162 48Q100 64 56 58Q36 54 26 38z" fill="url(#${o})"/><path d="M92 18Q106 38 94 60Q80 40 92 18z" fill="#150f1f"/>`;
+  $$('.slide').forEach((s, n) => {
+    const id = "rg" + n, oog = oogVan("oog" + n), cover = s.classList.contains('cover'), el = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    el.setAttribute('class', 'rift'); el.setAttribute('viewBox', '0 0 1920 1080'); el.setAttribute('aria-hidden', 'true');
+    const kant = scheur('M90 -40L250 70 120 190 210 330 90 450 170 590 60 760', 62, id) + scheur('M250 70L370 40 470 -30', 40, id) + kubus(330, 120, 26) + kubus(385, 88, 15) + kubus(268, 250, 20) + kubus(300, 300, 11) + kubus(40, 360, 22) + kubus(230, 500, 16) + kubus(30, 600, 14);
+    const hoek = scheur('M1960 190L1870 120 1780 60 1640 46 1570 -30', 34, id) + kubus(1690, 96, 18) + kubus(1735, 120, 10) + kubus(1850, 178, 16) + kubus(1560, 48, 11);
+    el.innerHTML = `<defs>${grad(id, cover ? 780 : 260)}${cover ? '<linearGradient id="oog' + n + '" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#f0602a"/><stop offset="1" stop-color="#8a3a12"/></linearGradient>' : ''}</defs>` +
+      (cover ? `<g>${kant}</g><g transform="translate(1920 0) scale(-1 1)">${kant}</g><g transform="translate(680 40)">${oog}</g><g transform="translate(1240 40) scale(-1 1)">${oog}</g>` : `<g opacity="${s.classList.contains('light') ? .85 : .9}">${hoek}</g>`);
+    s.prepend(el);
+  });
+})();
 
 // Architectuur
 (() => {
   const W = 280, H = 124, X = [0, 365, 730, 1095, 1460], Y = [40, 250, 460, 680];
-  const verf = { r: ['#c8321f', '#fff'], t: ['#1f6f78', '#fff'], n: ['#fffdf9', '#16181d'], d: ['#16181d', '#f3f1ec'] };
+  const verf = { r: ['#8a1fc4', '#fff'], t: ['#0b4fe0', '#fff'], n: ['#ffffff', '#150f1f'], d: ['#150f1f', '#e6f4fb'] };
   const box = (c, r, t, s, k, w = W) => { const f = verf[k];
-    return `<rect x="${X[c]}" y="${Y[r]}" width="${w}" height="${H}" rx="12" fill="${f[0]}" stroke="${k === 'n' ? '#16181d' : f[0]}" stroke-width="3"/><text x="${X[c] + w / 2}" y="${Y[r] + 54}" text-anchor="middle" font-size="28" font-weight="700" fill="${f[1]}">${t}</text><text x="${X[c] + w / 2}" y="${Y[r] + 91}" text-anchor="middle" font-size="23" fill="${f[1]}">${s}</text>`; };
+    return `<rect x="${X[c]}" y="${Y[r]}" width="${w}" height="${H}" rx="12" fill="${f[0]}" stroke="${k === 'n' ? '#150f1f' : f[0]}" stroke-width="3"/><text x="${X[c] + w / 2}" y="${Y[r] + 54}" text-anchor="middle" font-size="28" font-weight="700" fill="${f[1]}">${t}</text><text x="${X[c] + w / 2}" y="${Y[r] + 91}" text-anchor="middle" font-size="23" fill="${f[1]}">${s}</text>`; };
   const cy = r => Y[r] + H / 2, cx = c => X[c] + W / 2;
   const P = [
     `M${X[0] + W} ${cy(0)}H${X[1] - 12}`, `M${X[0] + W} ${cy(2)}H${X[1] - 12}`,
@@ -472,9 +490,9 @@ $$('[data-land]').forEach(svg => {
     `M${X[3] + W} ${cy(1) - 30}H${X[3] + W + 42}V${cy(0)}H${X[4] - 12}`, `M${X[3] + W} ${cy(1) + 30}H${X[3] + W + 42}V${cy(2)}H${X[4] - 12}`,
     `M${X[2]} ${cy(1)}H${X[1] + W + 12}`, `M${X[1]} ${cy(1)}H${X[0] + W + 12}`,
     `M${X[1] + W} ${cy(3)}H${X[2] - 12}`, `M${X[3] + W} ${cy(3)}H${X[4] - 12}`];
-  $('#arch').innerHTML = `<defs><marker id="ah" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5 0 10z" fill="#16181d"/></marker></defs>` +
-    `<line x1="0" x2="1740" y1="632" y2="632" stroke="#d5d0c5" stroke-width="2"/>` +
-    P.map((d, i) => `<g class="seq" style="--i:${i}"><path class="draw" style="--i:${i}" pathLength="1" d="${d}" fill="none" stroke="#16181d" stroke-width="4" marker-end="url(#ah)"/></g>`).join('') +
+  $('#arch').innerHTML = `<defs><marker id="ah" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5 0 10z" fill="#150f1f"/></marker></defs>` +
+    `<line x1="0" x2="1740" y1="632" y2="632" stroke="#d6cce8" stroke-width="2"/>` +
+    P.map((d, i) => `<g class="seq" style="--i:${i}"><path class="draw" style="--i:${i}" pathLength="1" d="${d}" fill="none" stroke="#150f1f" stroke-width="4" marker-end="url(#ah)"/></g>`).join('') +
     box(0, 0, 'API', 'externe systemen', 'n') + box(0, 1, 'Slack ops-kanaal', 'statusbericht', 'n') + box(0, 2, 'Slack scout-kanaal', 'vrije tekst', 'n') +
     box(1, 0, 'R1 Gate', 'controleren', 'r') + box(1, 1, 'R4 Chronicle', 'leest elke 5 min', 'r') + box(1, 2, 'R3 Oracle', 'Genie (AI)', 'r') +
     box(2, 1, 'Event Log', '+ Failed Events', 't') + box(3, 1, 'R2 Dispatch', 'wie krijgt het alarm?', 'r') +
